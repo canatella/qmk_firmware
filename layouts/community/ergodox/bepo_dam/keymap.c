@@ -15,6 +15,7 @@ enum custom_keycodes {
 // Modifier Keys
 #define WS_LEFT LALT(LCTL(KC_LEFT))
 #define WS_RIGHT LALT(LCTL(KC_RIGHT))
+#define EMACS_META_X LALTL(BP_X)
 
 const uint8_t layer_leds[] = {
   [BEPO] = 0,
@@ -56,7 +57,7 @@ KC_LALT,	KC_INS,		KC_NO,		KC_NO,		KC_LALT,
 				KC_TAB,		BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
 						BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		BP_M,
 				KC_RGUI,	BP_APOS,	BP_Q,		BP_G,		BP_H,		BP_F,		BP_CCED,
-								BP_ALGR,	KC_RCTL,	KC_NO,		KC_PSCREEN,	KC_RALT,
+								BP_ALGR,	KC_RCTL,	KC_NO,		KC_PSCREEN,	KC_LALT,
 KC_INT3,	KC_INT4,
 MO(NUMK),
 BP_P,	KC_RSHIFT,	MT(MOD_RCTL, KC_ENTER)),
