@@ -8,7 +8,9 @@
 #define NUMK 2	// numeric keypad layer
 
 // macros
-#define KP_00 0	// keypad "double 0"
+enum custom_keycodes {
+  KP_00 = SAFE_RANGE,	// keypad "double 0"
+};
 
 // Modifier Keys
 #define WS_LEFT LALT(LCTL(KC_LEFT))
@@ -128,26 +130,27 @@ KC_NO,		KC_NO,		KC_TRNS,	KC_TRNS,	KC_TRNS,
 				KC_NO,		KC_NO,		KC_KP_7,	KC_KP_8,	KC_KP_9,	KC_KP_PLUS,	KC_NO,
 						KC_NO,		KC_KP_4,	KC_KP_5,	KC_KP_6,	KC_KP_PLUS,	KC_NO,
 				KC_NO,		KC_NO,		KC_KP_1,	KC_KP_2,	KC_KP_3,	KC_KP_ENTER,	KC_NO,
-								KC_KP_0,	M(KP_00),	KC_KP_COMMA,	KC_KP_ENTER,	KC_NO,
+								KC_KP_0,	KP_00,		KC_KP_COMMA,	KC_KP_ENTER,	KC_NO,
 KC_TRNS,	KC_TRNS,
 KC_TRNS,
 KC_TRNS,	KC_TRNS,	KC_NO)
 };
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-  switch(id) {
-    // keypad "double 0"
-    case KP_00:
-      if (record->event.pressed) {
-        return MACRO( T(KP_0), D(KP_0), END );
-      } else {
-        return MACRO( U(KP_0), END );
-      }
-      break;
+bool process_kp_00(keyrecord_t *record) {
+  if (record->event.pressed) {
+    SEND_STRING(SS_TAP(X_KP_0)SS_TAP(X_KP_0));
+    return false;
   }
-  return MACRO_NONE;
-};
+  return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch(keycode) {
+    case KP_00:
+      return process_kp_00(record);
+  }
+  return true;
+}
 
 
 // Runs just one time when the keyboard initializes.
