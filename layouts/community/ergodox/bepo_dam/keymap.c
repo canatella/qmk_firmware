@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|  Tab |                                  | NumLo|------+------+------+------+------+--------|
  * | E_CIRC |A_GRAV|   Y  |   X  |   .  |   K  |      |                                  |      |   '  |   Q  |   G  |   H  |   F  | C_CEDIL|
  * `--------+------+------+------+------+-------------,-------------.      ,-------------`-------------+------+------+------+------+--------'
- *   |Escape|Insert|LSuper| LCtrl|  LAlt|             | BEPO |QWERTY|      |AZERTY| BEPO |             | AltGr| RCtrl|RSuper|PrntSc| Pause|
+ *   | Lalt |Insert|LSuper| LCtrl|Escape|             | BEPO |QWERTY|      |AZERTY| BEPO |             | AltGr| RCtrl|RSuper|PrntSc| Ralt|
  *   `----------------------------------'      ,------|------|------|      |------+------+------.      `----------------------------------'
  *                                             |      |      |L_NumK|      |L_NumK|      |      |
  *                                             | Space|LShift|------|      |------|RShift|Enter |
@@ -35,7 +35,7 @@ BP_DOLLAR,	BP_DQOT,	BP_LGIL,	BP_RGIL,	BP_LPRN,	BP_RPRN,	KC_DEL,
 BP_PERCENT,	BP_B,		BP_E_ACUTE,	BP_P,		BP_O,		BP_E_GRAVE,	KC_BSPC,
 BP_W,		BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
 BP_ECRC,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_TAB,
-KC_ESC,		KC_INS,		KC_LGUI,	KC_LCTL,	KC_LALT,
+KC_LALT,	KC_INS,		KC_LGUI,	KC_LCTL,	KC_LALT,
 														DF(BEPO),	DF(QW_B),
 																MO(NUMK),
 												KC_SPC,		KC_LSHIFT,	MO(FNAV),
@@ -44,7 +44,7 @@ KC_ESC,		KC_INS,		KC_LGUI,	KC_LCTL,	KC_LALT,
 				KC_CAPSLOCK,	BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
 						BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		BP_M,
 				KC_NUMLOCK,	BP_APOS,	BP_Q,		BP_G,		BP_H,		BP_F,		BP_CCED,
-								BP_ALGR,	KC_RCTL,	KC_RGUI,	KC_PSCREEN,	KC_PAUSE,
+								BP_ALGR,	KC_RCTL,	KC_RGUI,	KC_PSCREEN,	KC_RALT,
 DF(AZ_B),	DF(BEPO),
 MO(NUMK),
 MO(FNAV),	KC_RSHIFT,	KC_ENTER),
