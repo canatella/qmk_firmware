@@ -10,6 +10,12 @@
 // macros
 #define KP_00 0	// keypad "double 0"
 
+const uint8_t layer_leds[] = {
+  [BEPO] = 0,
+  [FNAV] = 3,
+  [NUMK] = 2
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: default layer
  *
@@ -47,13 +53,13 @@ KC_LALT,	KC_INS,		KC_LGUI,	KC_NO,		KC_LALT,
 								BP_ALGR,	KC_RCTL,	KC_RGUI,	KC_PSCREEN,	KC_RALT,
 KC_NO,		KC_NO,
 MO(NUMK),
-MO(FNAV),	KC_RSHIFT,	MT(MOD_RCTL, KC_ENTER)),
+BP_P,	KC_RSHIFT,	MT(MOD_RCTL, KC_ENTER)),
 /* Keymap 7: function / navigation / mouse layer
  *
  * ,--------------------------------------------------.                                  ,--------------------------------------------------.
- * |        |  F1  |  F2  |  F3  |  F4  |  F5  |VolMut|                                  |      |  F6  |  F7  |  F8  |  F9  |  F10 |        |
+ * |        |  F1  |  F2  |  F3  |  F4  |  F5  |VolMut|                                  |      |  F6  |  F7  |  F8  |  F9  |  F10 |  F11   |
  * |--------+------+------+------+------+-------------|                                  |------+------+------+------+------+------+--------|
- * |        | Next |LClick|  Up  |RClick| WhUp |VolDwn|                                  |      | PgUp | Home |  Up  |  End |  F11 |        |
+ * |        | Next |LClick|  Up  |RClick| WhUp |VolDwn|                                  |      | PgUp | Home |  Up  |  End |  F11 |  F12   |
  * |--------+------+------+------+------+------|      |                                  |      |------+------+------+------+------+--------|
  * |        | Prev | Left | Down | Right|WhDown|------|                                  |------| PgDn | Left | Down | Right|  F12 |        |
  * |--------+------+------+------+------+------| VolUp|                 =                |      |------+------+------+------+------+--------|
@@ -137,4 +143,29 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       break;
   }
   return MACRO_NONE;
+};
+
+
+// Runs just one time when the keyboard initializes.
+void matrix_init_user(void) {
+  ergodox_board_led_on();
+};
+
+// Runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+
+};
+
+
+// Runs whenever there is a layer state change.
+uint32_t layer_state_set_user(uint32_t state) {
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
+
+  uint8_t layer = biton32(state);
+  if (layer > 0)
+    ergodox_right_led_on(layer_leds[layer]);
+
+  return state;
 };
