@@ -49,7 +49,7 @@ BP_W,		BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
 BP_ECRC,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_LGUI,
 KC_LALT,	KC_INS,		KC_NO,		KC_NO,		KC_LALT,
 														KC_INT1,	KC_INT2,
-																MO(NUMK),
+																TT(NUMK),
 										MT(MOD_LCTL, KC_SPACE),		KC_LSHIFT,	TT(FNAV),
 // Right hand
 				KC_SLCK,	BP_AT,		BP_PLUS,	BP_MINUS,	BP_SLASH,	BP_ASTR,	BP_EQUAL,
