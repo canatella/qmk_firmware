@@ -10,6 +10,10 @@
 // macros
 #define KP_00 0	// keypad "double 0"
 
+// Modifier Keys
+#define WS_LEFT LALT(LCTL(KC_LEFT))
+#define WS_RIGHT LALT(LCTL(KC_RIGHT))
+
 const uint8_t layer_leds[] = {
   [BEPO] = 0,
   [FNAV] = 3,
@@ -65,7 +69,7 @@ BP_P,	KC_RSHIFT,	MT(MOD_RCTL, KC_ENTER)),
  * |--------+------+------+------+------+------| VolUp|                 =                |      |------+------+------+------+------+--------|
  * |        | Undo |  Cut | Copy | Paste|      |      |                                  |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------,-------------.      ,-------------`-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |             |      |      |      |      |      |             |      |      |      |      |      |
+ *   |      |      |      |      |      |             |      |      |      |      |      |             |WSLeft|WSRigh|     |      |      |
  *   `----------------------------------'      ,------|------|------|      |------+------+------.      `----------------------------------'
  *                                             |      |      |      |      |      |      |      |
  *                                             |      |      |------|      |------|      |      |
@@ -87,7 +91,7 @@ KC_NO,		KC_NO,		KC_TRNS,	KC_TRNS,	KC_TRNS,
 				KC_NO,		KC_PGUP,	KC_HOME,	KC_UP,		KC_END,		KC_F11,		KC_NO,
 						KC_PGDOWN,	KC_LEFT,	KC_DOWN,	KC_RIGHT,	KC_F12,		KC_NO,
 				KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,
-								KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_NO,		KC_NO,
+								WS_LEFT,	WS_RIGHT,	KC_TRNS,	KC_NO,		KC_NO,
 KC_TRNS,	KC_TRNS,
 KC_TRNS,
 KC_TRNS,	KC_TRNS,	KC_NO),
