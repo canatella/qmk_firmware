@@ -15,7 +15,8 @@ enum custom_keycodes {
 // Modifier Keys
 #define WS_LEFT LALT(LCTL(KC_LEFT))
 #define WS_RIGHT LALT(LCTL(KC_RIGHT))
-#define EMACS_META_X LALTL(BP_X)
+#define EMACS_M_X LALT(BP_X)
+#define EMACS_C_X LCTL(BP_X)
 
 const uint8_t layer_leds[] = {
   [BEPO] = 0,
@@ -32,10 +33,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   %    |   B  |E_ACUT|   P  |   O  |E_GRAV|Backsp|                                  | Tab  |   ^  |   V  |   D  |   L  |   J  |   Z    |
  * |--------+------+------+------+------+------|  ace |                                  |      |------+------+------+------+------+--------|
  * |   W    |   A  |   U  |   I  |   E  |   ,  |------|                                  |------|   C  |   T  |   S  |   R  |   N  |   M    |
- * |--------+------+------+------+------+------| LGui |                                  | RGui |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| Enter|                                  | RGui |------+------+------+------+------+--------|
  * | E_CIRC |A_GRAV|   Y  |   X  |   .  |   K  |      |                                  |      |   '  |   Q  |   G  |   H  |   F  | C_CEDIL|
  * `--------+------+------+------+------+-------------,-------------.      ,-------------`-------------+------+------+------+------+--------'
- *   | Lalt |Insert|      |      |Escape|             | Int1 | Int2 |      | Int3 | Int4 |             | AltGr|      |      |PrntSc| Ralt |
+ *   | Lalt |Insert|Escape|  C-x | RGui |             | Int1 | Int2 |      | Int3 | Int4 |             | AltGr|  C-x |      |PrntSc| Ralt |
  *   `----------------------------------'      ,------|------|------|      |------+------+------.      `----------------------------------'
  *                                             | space|      |L_NumK|      |      |      |enter |
  *                                             | LCtrl|LShift|------|      |------|RShift|RCtrl |
@@ -46,21 +47,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Left hand
 BP_DOLLAR,	BP_DQOT,	BP_LGIL,	BP_RGIL,	BP_LPRN,	BP_RPRN,	KC_DEL,
 BP_PERCENT,	BP_B,		BP_E_ACUTE,	BP_P,		BP_O,		BP_E_GRAVE,	KC_BSPC,
-BP_W,		BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
-BP_ECRC,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_LGUI,
-KC_LALT,	KC_INS,		KC_NO,		KC_NO,		KC_LALT,
+SFT_T(BP_W),	BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
+BP_ECRC,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_ENTER,
+  KC_LALT,	KC_INS,		KC_ESC,		EMACS_C_X,	KC_LGUI,
 														KC_INT1,	KC_INT2,
 																TT(NUMK),
-										MT(MOD_LCTL, KC_SPACE),		KC_LSHIFT,	TT(FNAV),
+												CTL_T(KC_SPACE),KC_LALT,	TT(FNAV),
 // Right hand
 				KC_SLCK,	BP_AT,		BP_PLUS,	BP_MINUS,	BP_SLASH,	BP_ASTR,	BP_EQUAL,
 				KC_TAB,		BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
-						BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		BP_M,
+
+				BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		SFT_T(BP_M),
 				KC_RGUI,	BP_APOS,	BP_Q,		BP_G,		BP_H,		BP_F,		BP_CCED,
-								BP_ALGR,	KC_RCTL,	KC_NO,		KC_PSCREEN,	KC_LALT,
+								BP_ALGR,	EMACS_C_X,	KC_NO,		KC_PSCREEN,	KC_LALT,
 KC_INT3,	KC_INT4,
 MO(NUMK),
-BP_P,	KC_RSHIFT,	MT(MOD_RCTL, KC_ENTER)),
+BP_P,		KC_LALT,	CTL_T(KC_SPACE)),
 /* Keymap 7: function / navigation / mouse layer
  *
  * ,--------------------------------------------------.                                  ,--------------------------------------------------.
@@ -88,7 +90,7 @@ KC_NO,		KC_UNDO,	KC_CUT,		KC_COPY,	KC_PASTE,	KC_NO,		KC_VOLD,
 KC_NO,		KC_NO,		KC_TRNS,	KC_TRNS,	KC_TRNS,
 														KC_TRNS,	KC_TRNS,
 																KC_TRNS,
-												KC_NO,		KC_TRNS,	KC_TRNS,
+												KC_TRNS,	KC_TRNS,	KC_TRNS,
 // Right hand
 				KC_NO,		KC_F6,		KC_F7,		KC_F8,		KC_F9,		KC_F10,		KC_NO,
 				KC_NO,		KC_PGUP,	KC_HOME,	KC_UP,		KC_END,		KC_F11,		KC_NO,
@@ -97,7 +99,7 @@ KC_NO,		KC_NO,		KC_TRNS,	KC_TRNS,	KC_TRNS,
 								WS_LEFT,	WS_RIGHT,	KC_TRNS,	KC_NO,		KC_NO,
 KC_TRNS,	KC_TRNS,
 KC_TRNS,
-KC_TRNS,	KC_TRNS,	KC_NO),
+KC_TRNS,	KC_TRNS,	KC_TRNS),
 /* Keymap 8: numeric keypad layer, sends keypad codes
  *
  * ,--------------------------------------------------.                                  ,--------------------------------------------------.
