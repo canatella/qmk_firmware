@@ -295,7 +295,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case EM_UNDO:
       send_c("9");
     case EM_MARK:
-      send_cx(" ");
+      send_c(" ");
     case EM_DEL:
       send_string(SS_TAP(X_DELETE));
     case EM_KWRD:
