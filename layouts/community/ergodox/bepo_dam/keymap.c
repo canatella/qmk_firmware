@@ -83,7 +83,7 @@ KC_LSHIFT,	BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
 KC_LGUI,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_ENTER,
 KC_INSERT,	KC_DELETE,	KC_HOME,	KC_END,		SL_EMACS,
 														KC_VOLD,	KC_VOLU,
-																KC_NO,
+																KC_MUTE,
 												LOWER(KC_SPACE),KC_LCTRL,	KC_LALT,
 // Right hand
 				KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,	 	KC_NO,		KC_NO,
