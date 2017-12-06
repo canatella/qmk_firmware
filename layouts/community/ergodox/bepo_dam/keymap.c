@@ -77,8 +77,8 @@ const uint8_t layer_leds[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BEPO] = LAYOUT_ergodox(
 // Left hand
-KC_ESCAPE,	KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_NO,
-KC_TAB,		BP_B,		BP_E_ACUTE,	BP_P,		BP_O,		BP_E_GRAVE,	KC_BSPC,
+KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_NO,
+KC_ESC,		BP_B,		BP_E_ACUTE,	BP_P,		BP_O,		BP_E_GRAVE,	KC_BSPC,
 KC_LSHIFT,	BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
 KC_LGUI,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_ENTER,
 KC_INSERT,	KC_DELETE,	KC_HOME,	KC_END,		SL_EMACS,
