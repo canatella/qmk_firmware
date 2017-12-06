@@ -6,9 +6,10 @@
 #define BEPO 0	// default layer, for bepo compatible systems
 #define LOWERED 1
 #define RAISED 2
-#define EMACS 3
-#define FNAV 4	// function / navigation / mouse layer
-#define NUMK 5	// numeric keypad layer
+#define ALTGRED 3
+#define EMACS 4
+#define FNAV 5	// function / navigation / mouse layer
+#define NUMK 6	// numeric keypad layer
 
 // macros
 enum custom_keycodes {
@@ -89,7 +90,7 @@ KC_INSERT,	KC_DELETE,	KC_HOME,	KC_END,		SL_EMACS,
 				SL_FNAV,	BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
 						BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		SFT_T(BP_M),
 				SL_NUMK,	BP_APOS,	BP_Q,		BP_G,		BP_H,		BP_F,		GUI_T(BP_W),
-								SL_EMACS,	BP_ALGR,	KC_NO,		KC_PGUP,	KC_PGDOWN,
+				SL_EMACS,	MO(ALTGRED),	KC_NO,		KC_PGUP,	KC_PGDOWN,
 KC_INT3,	KC_INT4,
 KC_NO,
 KC_LALT,	KC_RCTRL,	RAISE(KC_ENTER)),
@@ -127,6 +128,25 @@ KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 						BP_AT,		BP_PLUS,	BP_MINUS,	BP_SLSH,	BP_ASTR,	BP_EQUAL,
 				KC_TRNS,	LALT(BP_X),	WS_LEFT,	KC_UP,		WS_RIGHT,	BP_PERC,	KC_TRNS,
 								KC_LEFT,	KC_DOWN,	KC_RIGHT,	KC_TRNS,	KC_TRNS,
+KC_TRNS,	KC_TRNS,
+KC_TRNS,
+KC_TRNS,	KC_TRNS,	KC_TRNS),
+
+[ALTGRED] = LAYOUT_ergodox(
+KC_TRNS,	KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_NO,
+KC_TRNS, 	BP_PIPE,	BP_DACT,	BP_AMPR,	BP_OE,	 	BP_DGRV,	KC_TRNS,
+KC_TRNS,      	BP_AE,		BP_UGRV,	BP_DTRM,	BP_EURO,	BP_TAPO,
+KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	BP_ELPS,	BP_TILDE,	KC_TRNS,
+KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+														KC_TRNS, 	KC_TRNS,
+																KC_TRNS,
+												KC_TRNS,	KC_TRNS,	KC_TRNS,
+
+				KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_NO,
+				KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+						KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+				KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+								KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 KC_TRNS,	KC_TRNS,
 KC_TRNS,
 KC_TRNS,	KC_TRNS,	KC_TRNS),
