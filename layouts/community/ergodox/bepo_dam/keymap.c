@@ -52,12 +52,20 @@ enum custom_keycodes {
   EM_BWRD,
   EM_FWRD,
   EM_ELINE,
-  EM_MDEF
+  EM_MDEF,
+  EM_EVAL,
+  EM_NEG,
+  EM_KLINE,
+  EM_ISERF,
+  EM_ISERB,
+  EM_COMMIT,
+  EM_CANCEL
 };
 
 // Modifier Keys
 #define WS_LEFT LALT(LCTL(KC_LEFT))
 #define WS_RIGHT LALT(LCTL(KC_RIGHT))
+#define SL_ALTGR MO(ALTGRED)
 #define SL_EMACS MO(EMACS)
 #define SL_FNAV  TT(FNAV)
 #define SL_NUMK  TT(NUMK)
@@ -70,6 +78,7 @@ const uint8_t layer_leds[] = {
   [BEPO] = 0,
   [RAISED] = 0,
   [LOWERED] = 0,
+  [ALTGRED] = 0,
   [FNAV] = 2,
   [NUMK] = 3,
 };
@@ -79,8 +88,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Left hand
 KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_NO,
 KC_ESC,		BP_B,		BP_E_ACUTE,	BP_P,		BP_O,		BP_E_GRAVE,	KC_BSPC,
-KC_LSHIFT,	BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
-KC_LGUI,	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_ENTER,
+SFT_T(KC_TAB),	BP_A,		BP_U,		BP_I,		BP_E,		BP_COMMA,
+GUI_T(BP_CCED),	BP_A_GRAVE,	BP_Y,		BP_X,		BP_DOT,		BP_K,		KC_ENTER,
 KC_INSERT,	KC_DELETE,	KC_HOME,	KC_END,		SL_EMACS,
 														KC_VOLD,	KC_VOLU,
 																KC_MUTE,
@@ -90,7 +99,7 @@ KC_INSERT,	KC_DELETE,	KC_HOME,	KC_END,		SL_EMACS,
 				SL_FNAV,	BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
 						BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		SFT_T(BP_M),
 				SL_NUMK,	BP_APOS,	BP_Q,		BP_G,		BP_H,		BP_F,		GUI_T(BP_W),
-				SL_EMACS,	MO(ALTGRED),	KC_NO,		KC_PGUP,	KC_PGDOWN,
+				SL_EMACS,	SL_ALTGR,	KC_NO,		KC_PGUP,	KC_PGDOWN,
 KC_INT3,	KC_INT4,
 KC_NO,
 KC_LALT,	KC_RCTRL,	RAISE(KC_ENTER)),
@@ -99,7 +108,7 @@ KC_LALT,	KC_RCTRL,	RAISE(KC_ENTER)),
 KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_TRNS,
 KC_F12,		KC_F1,		KC_F2,		KC_F3,		KC_F4,		KC_F5,		KC_TRNS,
 KC_TRNS,        BP_1,		BP_2,		BP_3,		BP_4,		BP_5,
-KC_TRNS,	KC_TAB,		BP_LCBR,	BP_RCBR,	BP_BSLS,	LCTL(BP_X),	KC_TRNS,
+KC_TRNS,	KC_TRNS,	BP_LCBR,	BP_RCBR,	BP_BSLS,	LCTL(BP_X),	KC_TRNS,
 KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 														KC_TRNS, 	KC_TRNS,
 																KC_TRNS,
@@ -156,7 +165,7 @@ KC_TRNS,	KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO, 		KC_NO,
 EM_MKBUF, 	EM_1WIN,	EM_2HWIN,	EM_2VWIN,	EM_TWIN, 	EM_SWBUF,	EM_ARG,
 EM_UNDO,	EM_MARK,	EM_DEL,		EM_KWRD,	EM_KILL,	EM_COPY,
 EM_KSEXP,	EM_MKWRD,	EM_MKSXP,	EM_YANK,	EM_RYANK,	EM_REPL,	EM_QUIT,
-KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+KC_TRNS,	EM_EVAL,	EM_NEG,		EM_KLINE,	KC_TRNS,
 														KC_TRNS, 	KC_TRNS,
 																KC_TRNS,
 												KC_TRNS,	KC_TRNS,	KC_TRNS,
@@ -165,7 +174,7 @@ KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 				EM_ARG,		EM_FFILE,	EM_BSXP,	EM_USXP,	EM_DSXP,	EM_FSXP,	EM_KBUF,
 						EM_SFILE,	EM_BACK,	EM_PREV,	EM_NEXT,	EM_FORW,	EM_HELP,
 				EM_QUIT,	EM_WFILE,	EM_BLINE,	EM_BWRD,	EM_FWRD,	EM_ELINE,	EM_MDEF,
-								KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+								KC_TRNS,	EM_ISERF,	EM_ISERB,	EM_COMMIT,	EM_CANCEL,
 KC_TRNS,	KC_TRNS,
 KC_TRNS,
 KC_TRNS,	KC_TRNS,	KC_TRNS),
@@ -354,6 +363,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       send_c("f");
     case EM_MDEF:
       send_cm(".");
+    case EM_EVAL:
+      send_cx(SS_LCTRL("f"));
+    case EM_NEG:
+      send_c("8");
+    case EM_KLINE:
+      send_c("b");
+    case EM_ISERF:
+      send_c("k");
+    case EM_ISERB:
+      send_c("l");
+    case EM_COMMIT:
+      send_c("h" SS_LCTRL("h"));
+    case EM_CANCEL:
+      send_c("h" SS_LCTRL("f"));
   }
   return true;
 }
