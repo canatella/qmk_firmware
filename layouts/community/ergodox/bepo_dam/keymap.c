@@ -76,7 +76,7 @@ enum custom_keycodes {
 
 const uint8_t layer_leds[] = {
   [BEPO] = 0,
-  [RAISED] = 0,
+  [RAISED] = 2,
   [LOWERED] = 0,
   [ALTGRED] = 0,
   [FNAV] = 2,
@@ -96,9 +96,9 @@ KC_INSERT,	KC_DELETE,	KC_HOME,	KC_END,		SL_EMACS,
 												LOWER(KC_SPACE),KC_LCTRL,	KC_LALT,
 // Right hand
 				KC_NO,		KC_NO,		KC_NO,		KC_NO,		KC_NO,	 	KC_NO,		KC_NO,
-				SL_FNAV,	BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
+                                TT(RAISED),	BP_DCRC,	BP_V,		BP_D,		BP_L,		BP_J,		BP_Z,
 						BP_C,		BP_T,		BP_S,		BP_R,		BP_N,		SFT_T(BP_M),
-				SL_NUMK,	BP_APOS,	BP_Q,		BP_G,		BP_H,		BP_F,		GUI_T(BP_W),
+                                KC_TAB,  	BP_APOS,        BP_Q,		BP_G,		BP_H,		BP_F,		GUI_T(BP_W),
 				SL_EMACS,	SL_ALTGR,	KC_NO,		KC_PGUP,	KC_PGDOWN,
 KC_INT3,	KC_INT4,
 KC_NO,
