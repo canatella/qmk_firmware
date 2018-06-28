@@ -96,9 +96,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * runs seeming to need it. This may change when configuration for
  * this is more directly exposed.
  */
-#define DEBOUNCE    5
+#define DEBOUNCE    2
 
-#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD
 
 #define PREVENT_STUCK_MODIFIERS
 
