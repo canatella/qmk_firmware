@@ -90,8 +90,14 @@ uint8_t USB_ProcessHIDReport(const uint8_t* ReportData,
 				if (CurrStateTable == &StateTable[HID_STATETABLE_STACK_DEPTH - 1])
 				  return HID_PARSE_HIDStackOverflow;
 
-				memcpy((CurrStateTable + 1),
+                                HID_StateTable_t tmp[sizeof(HID_ReportItem_t)];
+
+				memcpy(tmp,
 				       CurrStateTable,
+				       sizeof(HID_ReportItem_t));
+
+				memcpy((CurrStateTable + 1),
+				       tmp,
 				       sizeof(HID_ReportItem_t));
 
 				CurrStateTable++;
@@ -386,4 +392,3 @@ uint16_t USB_GetHIDReportSize(HID_ReportInfo_t* const ParserData,
 
 	return 0;
 }
-
