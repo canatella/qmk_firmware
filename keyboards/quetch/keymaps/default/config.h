@@ -20,5 +20,6 @@
 #include "config_common.h"
 
 // place overrides here
+#define CUSTOM_MODIFIED_VALUES_ENABLE
 
 #endif
