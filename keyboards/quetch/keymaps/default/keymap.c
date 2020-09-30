@@ -34,6 +34,7 @@ enum custom_keycodes {
   MCRO_0 = SAFE_RANGE,
   MCRO_1,
   MCRO_2,
+  MCRO_3,
 };
 
 #define SHF_CCED         LSFT_T(BP_CCED)
@@ -53,6 +54,7 @@ enum custom_keycodes {
 #define TG_NAV           TG(NAV)
 #define TT_NUM           TT(NUM)
 #define TT_PROG          TT(PROG)
+#define TG_SUPL          TG(SUPL)
 
 
 /*
@@ -65,7 +67,7 @@ enum custom_keycodes {
 │(  shi   │   nav F5│   sup F6│   alt F7│   ctr F8│         │         │        +│   ctr  4│   alt  5│   sup  6│   nav  .│   shi  ⎵│
 │ç      Ça│a       æ│u       ù│i       ï│e       ⏎│,        │         │c       @│t       +│s       -│r       /│n       *│m     int│
 ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤         ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-│^   != ==│À   >    │Y   }   °│X   ]    │:   )   €│K        │         │?        │Q   (    │G   [    │H   {    │F   <    │W        │
+│^   != ==│À   <    │Y   {   °│X   [    │:   (   €│K        │         │?        │Q   )    │G   ]    │H   }    │F   >    │W        │
 │         │[      F1│       F2│       F3│       F4│         │         │        -│        1│        2│        3│        ,│         │
 │=        │à        │y        │x        │.        │k        │ent      │'       "│q       #│g       $│h       «│f       »│w     int│
 ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -80,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 KC_ESC  , BP_B    , BP_ECUT , BP_P    , BP_O    , BP_EGRV , KC_BSPC , BP_DCRC , BP_V    , BP_D    , BP_L    , BP_J    , BP_Z    ,
 SHF_CCED, NAV_BP_A, GUI_BP_U, ALT_BP_I, CTL_BP_E, BP_COMMA,           BP_C    , CTL_BP_T, ALT_BP_S, GUI_BP_R, NAV_BP_N, SHF_BP_M,
 BP_EQUAL, BP_AGRV , BP_Y    , BP_X    , BP_DOT  , BP_K    , KC_ENTER, BP_APOS , BP_Q    , BP_G    , BP_H    , BP_F    , BP_W    ,
-TT_NUM  , XXXXXXX , XXXXXXX , XXXXXXX , TT_PROG , LOW_SPC , TT_NUM  , RAI_TAB , TT_PROG , KC_CAPS , KC_VOLD , KC_VOLU , TT_NUM
+TT_NUM  , XXXXXXX , XXXXXXX , TG_SUPL , TT_PROG , LOW_SPC , TT_NUM  , RAI_TAB , TT_PROG , KC_CAPS , KC_VOLD , KC_VOLU , TT_NUM
 ),
 
 [PROG] = KEYMAP(
@@ -107,22 +109,22 @@ _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , 
 [NAV] = KEYMAP(
 _______ , _______ , _______ , _______ , _______ , _______ , _______ , KC_PGUP , CS_LWKSP, KC_UP   , CS_RWKSP, KC_HOME , KC_INT4 ,
 _______ , _______ , _______ , _______ , _______ , BP_TAPO ,           KC_PGDN , KC_LEFT , KC_DOWN , KC_RIGHT, KC_END  , KC_INT3 ,
-_______ , BP_GRTR , BP_RCBR , BP_RBRC , BP_RPRN , _______ , _______ , _______ , BP_LPRN , BP_LBRC , BP_LCBR , BP_LESS , _______ ,
+_______ , BP_LESS , BP_LCBR , BP_LBRC , BP_LPRN , _______ , _______ , _______ , BP_RPRN , BP_RBRC , BP_RCBR , BP_GRTR , _______ ,
 _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______
 ),
 
 [NUM] = KEYMAP(
 _______ , KC_F9   , KC_F10  , KC_F11  , KC_F12  , _______ , _______ , BP_ASTR , BP_7    , BP_8    , BP_9    , BP_SLSH , _______ ,
-_______ , KC_F5   , KC_F6   , KC_F7   , KC_F8   , _______ ,           BP_PLUS , BP_4    , BP_5    , BP_6    , BP_DOT  , KC_SPC  ,
+MCRO_3  , KC_F5   , KC_F6   , KC_F7   , KC_F8   , _______ ,           BP_PLUS , BP_4    , BP_5    , BP_6    , BP_DOT  , KC_SPC  ,
 _______ , KC_F1   , KC_F2   , KC_F3   , KC_F4   , _______ , _______ , BP_MINUS, BP_1    , BP_2    , BP_3    , BP_COMMA, _______ ,
 _______ , _______ , _______ , _______ , _______ , _______ , _______ , BP_0    , _______ , _______ , _______ , _______ , _______
 ),
 
 [SUPL] = KEYMAP(
+_______ , _______ , _______ , KC_UP   , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,
+KC_LSFT , BP_A    , KC_LEFT , KC_DOWN ,KC_RIGHT , _______ ,           _______ , _______ , _______ , _______ , _______ , _______ ,
 _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,
-_______ , _______ , _______ , _______ , _______ , _______ ,           _______ , _______ , _______ , _______ , _______ , _______ ,
-_______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,
-_______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______
+_______ , _______ , _______ , _______ , KC_LCTL , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______
 ),
 
 
@@ -141,6 +143,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MCRO_2:
       if (record->event.pressed)
         SEND_STRING(SS_RALT("d") "d");
+    case MCRO_3:
+      if (record->event.pressed)
+          SEND_STRING(SS_LSFT(SS_LGUI("5")));
       return false;
     case BP_EQUAL:
         return custom_keycode_on_modifiers(MOD_BIT(KC_LSFT), -1, record, BP_CIRCUMFLEX);
